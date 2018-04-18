@@ -13,7 +13,7 @@ import java.util.Queue;
 
 public class GameView extends View {
 
-    int canvasWidth, canvasHeight, buttonX = 100, buttonY = 100;
+    int canvasWidth, canvasHeight;
     Paint myColor;
 
     public GameObject enemy, otherEnemy;
@@ -139,18 +139,18 @@ public class GameView extends View {
         int multiplier = 50;
 
         if (values[1] < 0) {
-            if (myY + (int) (Math.abs(values[1]) * multiplier) > 0)
+            if (myY + mySize - (int) (Math.abs(values[1]) * multiplier) > 0)
                 myY = myY + (int) (Math.abs(values[1]) * multiplier);
         } else {
-            if (myY - (int) (Math.abs(values[1]) * multiplier) < canvasHeight)
+            if (myY - (int) (Math.abs(values[1]) * multiplier) + mySize < canvasHeight)
             myY = myY - (int) (Math.abs(values[1]) * multiplier);
         }
 
         if (values[2] < 0) {
-            if (myX - (int) (Math.abs(values[2]) * multiplier) > 0)
+            if (myX - (int) (Math.abs(values[2]) * multiplier) - mySize > 0)
             myX = myX - (int) (Math.abs(values[2]) * multiplier);
         } else {
-            if (myX + (int) (Math.abs(values[2]) * multiplier) < canvasWidth)
+            if (myX + (int) (Math.abs(values[2]) * multiplier) + mySize < canvasWidth)
             myX = myX + (int) (Math.abs(values[2]) * multiplier);
         }
 
